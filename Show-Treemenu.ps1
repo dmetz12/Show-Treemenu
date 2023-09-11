@@ -114,6 +114,8 @@ Function Show-TreeMenu {
     
     # DISPLAY OBJECT FOR TESTING
     $menuItems | Format-Table
+
+    Start-Sleep -Seconds 5
     
     
 $mainMenuScriptBlock = {

@@ -55,8 +55,9 @@ Function Show-TreeMenu {
     [ValidateNotNullOrEmpty()]
     [string]$BranchStyle = "ASCII",
 
-    [Parameter(ValueFromPipeline=$true)]
-    [xml]$XmlData
+    [Parameter(ValueFromPipeline=$true, Mandatory)]
+    [ValidateScript({Test-Path -Path $_})]
+    [string]$xmlFilePath
     
     )
 
@@ -93,60 +94,48 @@ Function Show-TreeMenu {
         }
     }
 
-    $MenuItemSections = [System.Collections.Generic.List[object]]::New()
-    $MenuItemOptions = [System.Collections.Generic.List[object]]::New()
-    $MenuItemFunctions = [System.Collections.Generic.List[object]]::New()
-
-    if($XmlData){
-
-        foreach($sect in $XmlData.MenuConfig.Section.SectionName){
-            $MenuItemSections.Add($sect)
-        }
-
-        foreach($opt in $XmlData.MenuConfig.Section.Option){
-            $MenuItemFunctions.Add($opt)
-        }
-
-
-        foreach($func in $XmlData.MenuConfig.Section.Function){
-            $MenuItemFunctions.Add($func)
-        }
-        
-    }
-
-
+    # IMPORT THE XML FILE FROM THE PROVIDED PATH AND GET TO THE "SECTION" PORTION WITH THE SECTIONS, OPTIONS, AND FUNCTIONS
+    [xml]$xmlRaw = Get-Content -Path $xmlFilePath
+    $xmlData = $xmlRaw.MenuConfig.Section 
     
-    if($MenuItemOptions.Count -ne $MenuItemFunctions.Count){
+    # SPLIT THEM INTO THEIR OWN VARIABLES TO MAKE THEM EASIER TO WORK WITH
+    $xmlSections    = $xmlData.Section
+    $xmlOptions     = $xmlData.Option
+    $xmlFunctions   = $xmlData.Function
+
+    # CONFIRM THE NUMBER OF OPTIONS AND FUNCTIONS ARE THE SAME TO ENSURE FUNCTIONALITY.
+    if($xmlOptions.Count -ne $xmlFunctions.Count){
         Write-Host "========================================" -ForegroundColor Red
-        Write-Host "Sections  ==> $($MenuItemSections.Count)"  -ForegroundColor Green        
-        Write-Host "Options   ==> $($MenuItemOptions.Count)" -ForegroundColor Yellow
-        Write-Host "Functions ==> $($MenuItemFunctions.Count)"   -ForegroundColor Magenta
-        throw "The number of MenuItemOptions & MenuItemFunctions should be the same."
+        Write-Host "Sections  ==> $($xmlSections.Count)"  -ForegroundColor Green        
+        Write-Host "Options   ==> $($xmlOptions.Count)" -ForegroundColor Yellow
+        Write-Host "Functions ==> $($xmlFunctions.Count)"   -ForegroundColor Magenta
+        throw "The number of MenuItemOptions & MenuItemFunctions should be the same, please fix your [MenuConfig.xml] file."
     }
     
-    $menuItems = [System.Collections.Generic.List[object]]::New()
+    # $menuItems = [System.Collections.Generic.List[object]]::New()
     
-    for($i = 0; $i -lt $MenuItemSections.count; $i++){
+    # for($i = 0; $i -lt $MenuItemSections.count; $i++){
     
-        $sections = $MenuItemSections[$i]
-        $options = $MenuItemOptions[$i]
-        $functions = $MenuItemFunctions[$i]
+    #     $sections = $MenuItemSections[$i]
+    #     $options = $MenuItemOptions[$i]
+    #     $functions = $MenuItemFunctions[$i]
     
-        $mitem = [PSCustomObject]@{
-            Section     = $sections
-            Option      = $options
-            Function    = $functions
-        }
+    #     $mitem = [PSCustomObject]@{
+    #         Section     = $sections
+    #         Option      = $options
+    #         Function    = $functions
+    #     }
     
-        $menuItems.Add($mitem)
-    }
+    #     $menuItems.Add($mitem)
+    # }
     
     # DISPLAY OBJECT FOR TESTING
-    $menuItems | Format-Table
+    #$menuItems | Format-Table
     
     
 $mainMenuScriptBlock = {
     
+    # TOP DISPLAY OF THE MENU WITH MENUNAME
     Write-Host " $($style.tl)$($style.hr * 5)$($style.tr)" -ForegroundColor $BranchColor
     Write-Host " $($style.vr)    " -ForegroundColor $BranchColor -NoNewline; 
     Write-Host $MenuName -ForegroundColor $MenuNameColor
@@ -292,7 +281,7 @@ $mainMenuScriptBlock = {
     }until(($subSelectionINT -ge 1 -and $subSelectionINT -le $selectionNames.Count) -or ($subSelection -eq "q") -or ($subSelection -eq "m"))
     
 }
-    } 
+} 
     
     & $mainMenuScriptBlock
     
@@ -325,12 +314,13 @@ function S3-Function2{
 }
 
 
-[xml]$TestXml = Get-Content -Path ".\Settings.xml"
+# [xml]$TestXml = Get-Content -Path ".\Settings.xml"
 
-$TestXml.MenuConfig.Section 
+# $TestXml.MenuConfig.Section 
 
 
-$TestXml | Show-TreeMenu -MenuName "MainMenu" -BranchStyle SingleLine -BranchColor Gray -QuitExpression "Write-host 'I Quit!' -f Red; Return"
+
+Show-TreeMenu -MenuName "MainMenu" -BranchStyle SingleLine -BranchColor Gray -QuitExpression "Write-host 'I Quit!' -f Red; Return" -xmlFilePath "C:\Users\Daniel Metzler\Desktop\ShowTreemenu\Settings.xml"
 
 
 
