@@ -1,29 +1,24 @@
 <?xml version="1.0"?>
-
 <MenuConfig>
-
     <Section>
         <SectionName>Section1</SectionName>
         <Option>S1-Option1</Option>
-        <Option>S1-Option1</Option>
+        <Option>S1-Option2</Option>
         <Function>S1-Function1</Function>
         <Function>S1-Function2</Function>
     </Section>
-
     <Section>
         <SectionName>Section2</SectionName>
         <Option>S2-Option1</Option>
-        <Option>S2-Option1</Option>
+        <Option>S2-Option2</Option>
         <Function>S2-Function1</Function>
         <Function>S2-Function2</Function>
     </Section>
-
     <Section>
         <SectionName>Section3</SectionName>
         <Option>S3-Option1</Option>
-        <Option>S3-Option1</Option>
+        <Option>S3-Option2</Option>
         <Function>S3-Function1</Function>
         <Function>S3-Function2</Function>
     </Section>
-
 </MenuConfig>
