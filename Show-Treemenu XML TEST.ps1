@@ -99,38 +99,19 @@ Function Show-TreeMenu {
     $xmlData = $xmlRaw.MenuConfig.Section 
     
     # SPLIT THEM INTO THEIR OWN VARIABLES TO MAKE THEM EASIER TO WORK WITH
-    $xmlSections    = $xmlData.Section
-    $xmlOptions     = $xmlData.Option
-    $xmlFunctions   = $xmlData.Function
+    #$xmlSections    = $xmlData.Section
+    #$xmlOptions     = $xmlData.Option
+    #$xmlFunctions   = $xmlData.Function
 
     # CONFIRM THE NUMBER OF OPTIONS AND FUNCTIONS ARE THE SAME TO ENSURE FUNCTIONALITY.
-    if($xmlOptions.Count -ne $xmlFunctions.Count){
+    if($xmlData.Option.Count -ne $xmlData.Function.Count){
         Write-Host "========================================" -ForegroundColor Red
-        Write-Host "Sections  ==> $($xmlSections.Count)"  -ForegroundColor Green        
-        Write-Host "Options   ==> $($xmlOptions.Count)" -ForegroundColor Yellow
-        Write-Host "Functions ==> $($xmlFunctions.Count)"   -ForegroundColor Magenta
+        Write-Host "Sections  ==> $($xmlData.Section.Count)"  -ForegroundColor Green        
+        Write-Host "Options   ==> $($xmlData.Option.Count)" -ForegroundColor Yellow
+        Write-Host "Functions ==> $($xmlData.Function.Count)"   -ForegroundColor Magenta
+        Write-Host "========================================`n" -ForegroundColor Red
         throw "The number of MenuItemOptions & MenuItemFunctions should be the same, please fix your [MenuConfig.xml] file."
     }
-    
-    # $menuItems = [System.Collections.Generic.List[object]]::New()
-    
-    # for($i = 0; $i -lt $MenuItemSections.count; $i++){
-    
-    #     $sections = $MenuItemSections[$i]
-    #     $options = $MenuItemOptions[$i]
-    #     $functions = $MenuItemFunctions[$i]
-    
-    #     $mitem = [PSCustomObject]@{
-    #         Section     = $sections
-    #         Option      = $options
-    #         Function    = $functions
-    #     }
-    
-    #     $menuItems.Add($mitem)
-    # }
-    
-    # DISPLAY OBJECT FOR TESTING
-    #$menuItems | Format-Table
     
     
 $mainMenuScriptBlock = {
@@ -145,56 +126,60 @@ $mainMenuScriptBlock = {
     $menuSectionCounter = 0
     
     do{
-    $currentArrayItem = $null
-    $currentArrayItem = $menuItems[$menuLoopCounter]
-    
-    $sectionOptions = $currentArrayItem | Select-Object -ExpandProperty Option
-    
+
+    $currentXMLItem = $null
+    $currentXMLItem = $xmlData[$menuLoopCounter]
     $menuSectionCounter++
     
     Write-Host " $($style.vr)     $($style.ltj)$($style.hr * 5)" -ForegroundColor $BranchColor -NoNewline; 
-    Write-Host "[$($menuSectionCounter)] $($currentArrayItem.Section)" -ForegroundColor $MenuItemSectionColor
-    
-    foreach($option in $sectionOptions){
-    
-        $optionIndex = $sectionOptions.IndexOf($option)
-        $lastOptionIndex = $sectionOptions.Count - 1
-        $optionCounter++
+    Write-Host "[$($menuSectionCounter)] $($currentXMLItem.SectionName)" -ForegroundColor $MenuItemSectionColor
+
+
+    #Write-host $currentXMLItem.Option.count -f magenta
+
+    foreach($option in $currentXMLItem.Option){
+        
+        $optionIndex        = ($currentXMLItem.Option).IndexOf($option)
+        $lastOptionIndex    = ($currentXMLItem.Option.Count - 1)
+
     
         if($optionIndex -eq $lastOptionIndex){
             Write-Host " $($style.vr)     $($style.vr)     $($style.bl)$($style.hr * 5)" -ForegroundColor $BranchColor -NoNewline
             Write-Host $option -ForegroundColor $MenuOptionColor
             Write-host " $($style.vr)     $($style.vr)" -ForegroundColor $BranchColor
         }else{
-            Write-Host " $($style.vr)     $($style.vr)     $($style.hr)$($style.hr * 5)" -ForegroundColor $BranchColor -NoNewline
+            Write-Host " $($style.vr)     $($style.vr)     $($style.ltj)$($style.hr * 5)" -ForegroundColor $BranchColor -NoNewline
             Write-Host $option -ForegroundColor $MenuOptionColor
         }
     
     }
     
-    
     $menuLoopCounter++
+   
+    }until($menuLoopCounter -eq $xmlData.Count)
     
-    }until($menuLoopCounter -eq $menuItems.Count)
-    
+
     Write-Host " $($style.vr)    " -NoNewline -ForegroundColor $BranchColor
     Write-Host "[Q] Quit" -ForegroundColor Red
     Write-Host " $($style.vr)     $($style.vr)" -ForegroundColor $BranchColor
     Write-Host " $($style.bl)$($style.hr * 5)$($style.br)" -ForegroundColor $BranchColor
     
     
+
+
+
     $quitFlag = $false  # Add this line before the outer loop
 
     do{
     
-        $selection = $(Write-Host " $selectionPrompt" -NoNewline -ForegroundColor $SelectionPromptColor; Write-Host " [1-$($menuItems.Count)] ==> " -NoNewline -ForegroundColor $SelectionPromptColor; Read-Host)
+        $selection = $(Write-Host " $selectionPrompt" -NoNewline -ForegroundColor $SelectionPromptColor; Write-Host " [1-$($xmlData.Count)] ==> " -NoNewline -ForegroundColor $SelectionPromptColor; Read-Host)
     
         switch ($selection){
     
-            {$selection -ge 1 -and $selection -le $menuItems.Count}{
+            {$selection -ge 1 -and $selection -le $xmlData.Count}{
                 $index = $selection - 1
     
-                $selectionValue = $menuItems[$index]
+                $selectionValue = $xmlData[$index]
                 $selectionNames = $selectionValue | Select-Object -ExpandProperty Option
     
                 Clear-Host
@@ -203,7 +188,7 @@ $mainMenuScriptBlock = {
                 Write-Host " $($style.vr)    " -NoNewLine -ForegroundColor $BranchColor; Write-host "[M] $MenuName" -ForegroundColor $MenuNameColor
                 Write-Host " $($style.vr)     $($style.vr)" -ForegroundColor $BranchColor
                 Write-Host " $($style.vr)     $($style.ltj)$($style.hr * 5)" -ForegroundColor $BranchColor -NoNewline
-                Write-Host $selectionValue.Section -ForegroundColor $MenuItemSectionColor
+                Write-Host $selectionValue.SectionName -ForegroundColor $MenuItemSectionColor
     
                 $subMenuOptionCounter = 0
     
@@ -218,7 +203,7 @@ $mainMenuScriptBlock = {
                     Write-Host "[$subMenuOptionCounter] $subMenuOption" -ForegroundColor $MenuOptionColor
                     Write-Host " $($style.vr)     $($style.vr)" -ForegroundColor $BranchColor
                 }else{
-                    Write-Host " $($style.vr)     $($style.vr)      $($style.hr)$($style.hr * 5)" -NoNewline -ForegroundColor $BranchColor
+                    Write-Host " $($style.vr)     $($style.vr)      $($style.ltj)$($style.hr * 5)" -NoNewline -ForegroundColor $BranchColor
                     Write-Host "[$subMenuOptionCounter] $subMenuOption" -ForegroundColor $MenuOptionColor
                 }
     
@@ -239,7 +224,7 @@ $mainMenuScriptBlock = {
     
         }
     
-    }until(($selection -ge 1 -and $selection -le $menuItems.Count) -or ($selection -eq "q"))
+    }until(($selection -ge 1 -and $selection -le $xmlData.Count) -or ($selection -eq "q"))
     
     
 
@@ -255,19 +240,27 @@ $mainMenuScriptBlock = {
             {[int]$subSelectionINT -ge 1 -and [int]$subSelectionINT -le $selectionNames.Count}{
     
                 $subIndex = $subSelection - 1
-                $selectionValue = $menuItems[$index]
-                $subSelectionFunctions = $selectionValue | Select-Object Function
-                $functionToInvoke = $subSelectionFunctions[$subIndex] | Select-Object -ExpandProperty Function
+
+                $functionToInvoke = $xmlData[$index].Function[$subIndex]
+                
+                Invoke-Expression -Command $functionToInvoke
                 
 
-                Invoke-Expression -Command $functionToInvoke
+                Write-host "" 
+                do{
+                    
+                    Write-Host "`rPress " -NoNewline
+                    Write-Host "[Space Bar] " -ForegroundColor Green -NoNewline
+                    Write-Host "to return to MainMenu"
+                    $keyPress = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 
-                Write-Host "`nReturning to MainMenu..." -f Gray
-                Start-Sleep -Seconds 2
+
+                }until($keyPress.VirtualKeyCode -eq 32)
 
                 Clear-Host
                 & $mainMenuScriptBlock
-    
+
+
             }
             "q" {
                 Invoke-Expression -Command $QuitExpression
@@ -290,6 +283,7 @@ $mainMenuScriptBlock = {
 
 function S1-Function1{
     Write-Host "Executing [S1-Function1]..." -ForegroundColor Green
+    start-sleep -seconds 15
     Write-Host "SUCCESS!" -ForegroundColor Green
 }
 function S1-Function2{
@@ -320,7 +314,7 @@ function S3-Function2{
 
 
 
-Show-TreeMenu -MenuName "MainMenu" -BranchStyle SingleLine -BranchColor Gray -QuitExpression "Write-host 'I Quit!' -f Red; Return" -xmlFilePath "C:\Users\Daniel Metzler\Desktop\ShowTreemenu\Settings.xml"
+Show-TreeMenu -MenuName "MainMenu" -BranchStyle Singleline -BranchColor Gray -QuitExpression "Write-host 'I Quit!' -f Red; Return" -xmlFilePath "C:\Users\Daniel Metzler\Desktop\ShowTreemenu\Settings.xml"
 
 
 
