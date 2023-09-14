@@ -69,6 +69,9 @@ Function Show-Treemenu {
     [string]$XmlPath,
 
     [Parameter()]
+    [boolean]$Timer = $true,
+
+    [Parameter()]
     [ValidateNotNullOrEmpty()]
     [string]$MenuTitle = "MainMenu",
 
@@ -279,9 +282,37 @@ $MainScriptBlock = {
 
                     $functionToInvoke = $xmlData[$index].Function[$subIndex]
                     
-                    Write-host "" 
-                    Invoke-Expression "& '$functionToInvoke'"
-                    Write-host "" 
+
+                    if($Timer){
+                        $stopwatch = [System.Diagnostics.Stopwatch]::StartNew()
+
+                        Write-host "" 
+                        Invoke-Expression "& '$functionToInvoke'"
+                        Write-host "" 
+
+                        $stopwatch.Stop()
+                        $elapsedTime = $stopwatch.Elapsed
+                        # Format the elapsed time as "00H 00M 00S" with color codes
+                        $formattedTime = '{0:D2}' -f $elapsedTime.Hours
+                        $formattedTime += [char]27 + '[31m' + 'h ' + [char]27 + '[0m'  # Red color for 'H'
+                        $formattedTime += '{0:D2}' -f $elapsedTime.Minutes
+                        $formattedTime += [char]27 + '[32m' + 'm ' + [char]27 + '[0m'  # Green color for 'M'
+                        $formattedTime += '{0:D2}' -f $elapsedTime.Seconds
+                        $formattedTime += [char]27 + '[34m' + 's' + [char]27 + '[0m'   # Blue color for 'S'
+
+                        Write-Host "$($style.tl)$($style.hr * 30)$($style.tr)" -ForegroundColor $BranchColor
+                        Write-Host "$($style.vr) " -NoNewline -ForegroundColor $BranchColor
+                        Write-Host "Processing Time: " -NoNewline -ForegroundColor White
+                        Write-Host "$formattedTime" -NoNewline 
+                        Write-host " $($style.vr)" -ForegroundColor $BranchColor
+                        Write-Host "$($style.bl)$($style.hr * 30)$($style.br)" -ForegroundColor $BranchColor
+
+                    }else{
+                        Write-host "" 
+                        Invoke-Expression "& '$functionToInvoke'"
+                        Write-host "" 
+                    }
+
                     
                     do{
                         
@@ -315,7 +346,10 @@ $MainScriptBlock = {
 
 function S1-Function1{
     Write-Host "Executing [S1-Function1]..." -ForegroundColor Green
-    start-sleep -seconds 15
+    start-sleep -seconds 5
+    1..100 | foreach-object {
+        Write-Host "Cool" 
+    }
     Write-Host "SUCCESS!" -ForegroundColor Green
 }
 function S1-Function2{
@@ -347,6 +381,6 @@ function S3-Function2{
 
 # Show-TreeMenu -XmlPath "C:\Users\Daniel Metzler\Desktop\ShowTreemenu\Settings.xml"
 
-Show-TreeMenu -XmlPath "C:\Users\Daniel Metzler\Desktop\ShowTreemenu\MenuConfig.xml" #-BranchStyle DoubleLine -TitleColor Yellow -BranchColor Darkgreen -SectionColor Green -OptionColor White -PromptColor Yellow
+Show-TreeMenu -XmlPath "C:\Users\Daniel Metzler\Desktop\ShowTreemenu\MenuConfig.xml" -BranchColor magenta #-BranchStyle DoubleLine -TitleColor Yellow -BranchColor Darkgreen -SectionColor Green -OptionColor White -PromptColor Yellow
 
 # "C\Users\REPLACEUser\Desktop\ShowTreemenu\Settings.xml"
