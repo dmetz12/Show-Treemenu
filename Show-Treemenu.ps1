@@ -8,57 +8,44 @@ Function Show-Treemenu {
     and uses these settings to create an organized menu. Users can select from different menu sections,
     options within those sections, and execute corresponding functions.
 
-    This function allows for easy customization of terminal menus, making it convenient for users to access
-    and execute a collection of functions/scriptpaths in a structured and user-friendly manner.
+    This function allows for `easy customization of terminal menus, making it convenient for users to access
+    and execute a collection of functions/scriptpaths in a structured and user-friendly manner`.
 
 .PARAMETER MenuTitle
-    Description:
     Simply the title of the menu. 
 
 .PARAMETER QuitExpression
-    Description:
     Use this to call a function to logoff an API, call a quit function / script path, or simply return to exit the menu. 
 
 .PARAMETER SelectionPrompt
-    Description:
     The phrase the user will be prompted with to make a choice/selection.
 
+.PARAMETER Timer
+    Gets the processing time of an executed function/scriptfile and returns it cleanly in 00hour 00minute 00second format.
+
 .PARAMETER TitleColor
-    Description:
     The color of the title of the menu.
 
 .PARAMETER PromptColor
-    Description:
     The color of the phrase the user will be prompted with to make a choice/selection.
 
 .PARAMETER BranchColor
-    Description:
     The color of the "grid-like" symbols used to create the treemenu.
 
 .PARAMETER SectionColor
-    Description:
-    Default ==> [Yellow]
     The color of the main sections or categories.
 
 .PARAMETER OptionColor
-    Description:
-    Default ==> [White]
     The color of the options, below and indented underneath the sections.
 
 .PARAMETER BranchStyle
-    Description:
-    The style [ASCII, SingleLine, or DoubleLine] that will be used to generate the treemenu.
+    The style `ASCII`, `SingleLine`, or `DoubleLine` that will be used to generate the treemenu.
 
 .PARAMETER XmlPath
-    Description:
-    The path of the [MenuConfig.xml] file.
+    The path of the `MenuConfig.xml` file.
 
 .EXAMPLE
     & Show-TreeMenu -XmlPath "C:\Users\REPLACE_USER\Desktop\ShowTreemenu\MenuConfig.xml"
-
-.NOTES
-    File Name      : Show-Treemenu.ps1
-    Author         : Dan Metzler
 #>
 
     [CmdletBinding()]
@@ -81,7 +68,7 @@ Function Show-Treemenu {
 
     [Parameter()]
     [ValidateNotNullOrEmpty()]
-    [string]$QuitExpression = "Write-host '`nThe parameter [' -nonewline; Write-host 'QuitExpression' -f Red -nonewline; Write-host '] by default is set to [' -nonewline; Write-host 'Return' -f Cyan -nonewline; Write-host ']`n'; Return",
+    [string]$QuitExpression = "Return",
     
     [Parameter()]
     [ValidateSet("Black","Darkblue", "DarkGreen", "DarkCyan", "DarkRed", "DarkMagenta", "DarkYellow", "Gray", "DarkGray", "Blue", "Green", "Cyan", "Red", "Magenta", "Yellow", "White")]
@@ -258,6 +245,7 @@ $MainScriptBlock = {
             }
     
             "q" {
+                Write-host '`nThe parameter [' -nonewline; Write-host 'QuitExpression' -f Red -nonewline; Write-host '] by default is set to [' -nonewline; Write-host 'Return' -f Cyan -nonewline; Write-host ']`n';
                 Invoke-Expression -Command $QuitExpression
                 $quitFlag = $true  # Set the quit flag to true
                 Break;             # Break out of the inner loop
@@ -328,6 +316,7 @@ $MainScriptBlock = {
 
                 }
                 "q" {
+                    Write-host '`nThe parameter [' -nonewline; Write-host 'QuitExpression' -f Red -nonewline; Write-host '] by default is set to [' -nonewline; Write-host 'Return' -f Cyan -nonewline; Write-host ']`n';
                     Invoke-Expression "& '$QuitExpression'"
                     $quitFlag = $true  # Set the quit flag to true
                     Break;             # Break out of the inner loop
