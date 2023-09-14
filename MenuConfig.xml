@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<MenuConfig>
+    <Section>
+        <SectionName>ActiveDirectory</SectionName>
+        <Option>Create User</Option>
+        <Option>Create Group</Option>
+        <Function>Cool</Function>
+        <Function>Cool</Function>
+    </Section>
+    <Section>
+        <SectionName>Networking</SectionName>
+        <Option>Ping Host</Option>
+        <Option>IP Config</Option>
+        <Option>Test Connection</Option>
+        <Function>S2-Function1</Function>
+        <Function>S2-Function2</Function>
+        <Function>S2-Function2</Function>
+    </Section>
+    <Section>
+        <SectionName>Reports</SectionName>
+        <Option>Domain Users</Option>
+        <Option>Domain Groups</Option>
+        <Option>Domain Computers</Option>
+        <Function>S3-Function1</Function>
+        <Function>S3-Function2</Function>
+        <Function>S3-Function2</Function>
+    </Section>
+</MenuConfig>

@@ -1,0 +1,1 @@
+Write-host "This is my example from a file" -ForegroundColor Green -BackgroundColor DarkCyan

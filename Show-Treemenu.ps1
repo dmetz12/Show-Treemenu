@@ -9,23 +9,49 @@ Function Show-Treemenu {
     options within those sections, and execute corresponding functions.
 
     This function allows for easy customization of terminal menus, making it convenient for users to access
-    and execute a collection of functions in a structured and user-friendly manner.
+    and execute a collection of functions/scriptpaths in a structured and user-friendly manner.
 
-.PARAMETER ParameterName
+.PARAMETER MenuTitle
     Description:
-    Specifies the name of the parameter.
-    This parameter accepts a string value representing the name of an item.
+    Default ==> [MainMenu]
+    Simply the title of the menu. 
 
-.PARAMETER AnotherParameter
+.PARAMETER QuitExpression
     Description:
-    Specifies another parameter.
-    Provide details on its usage and what kind of value it expects.
+    Default ==> [Return]
+    Use this to call a function to logoff an API, call a quit function / script path, or simply return to exit the menu. 
+
+.PARAMETER TitleColor
+    Description:
+    Default ==> [Cyan]
+    The phrase the user will be prompted with to make a choice/selection.
+
+.PARAMETER BranchColor
+    Description:
+    Default ==> [Gray]
+    The color of the "grid-like" symbols used to create the treemenu.
+
+.PARAMETER SectionColor
+    Description:
+    Default ==> [Yellow]
+    The color of the main sections or categories.
+
+.PARAMETER OptionColor
+    Description:
+    Default ==> [White]
+    The color of the options, below and indented underneath the sections.
+
+.PARAMETER BranchStyle
+    Description:
+    Default ==> [Singleline]
+    The style [ASCII, SingleLine, or DoubleLine] that will be used to generate the treemenu.
+
+.PARAMETER XmlPath
+    Description:
+    The path of the [MenuConfig.xml] file.
 
 .EXAMPLE
-    Example of how to use the function:
-    ```powershell
-    PS> My-Function -ParameterName 'Value' -AnotherParameter 'AnotherValue'
-    ```
+    PS C:\Temp>Show-TreeMenu -XmlPath "C:\Users\REPLACE_USER\Desktop\ShowTreemenu\MenuConfig.xml"
 
 .NOTES
     File Name      : Show-Treemenu.ps1
@@ -34,6 +60,10 @@ Function Show-Treemenu {
 
     [CmdletBinding()]
     param(
+    [Parameter(ValueFromPipeline=$true, Mandatory)]
+    [ValidateScript({Test-Path -Path $_})]
+    [string]$XmlPath,
+
     [Parameter()]
     [ValidateNotNullOrEmpty()]
     [string]$MenuTitle = "MainMenu",
@@ -44,7 +74,7 @@ Function Show-Treemenu {
 
     [Parameter()]
     [ValidateNotNullOrEmpty()]
-    [string]$QuitExpression,
+    [string]$QuitExpression = "Write-host '`nThe parameter [' -nonewline; Write-host 'QuitExpression' -f Red -nonewline; Write-host '] by default is set to [' -nonewline; Write-host 'Return' -f Cyan -nonewline; Write-host ']`n'; Return",
     
     [Parameter()]
     [ValidateSet("Black","Darkblue", "DarkGreen", "DarkCyan", "DarkRed", "DarkMagenta", "DarkYellow", "Gray", "DarkGray", "Blue", "Green", "Cyan", "Red", "Magenta", "Yellow", "White")]
@@ -74,11 +104,7 @@ Function Show-Treemenu {
     [Parameter()]
     [ValidateSet("ASCII", "SingleLine", "DoubleLine")]
     [ValidateNotNullOrEmpty()]
-    [string]$BranchStyle = "ASCII",
-
-    [Parameter(ValueFromPipeline=$true, Mandatory)]
-    [ValidateScript({Test-Path -Path $_})]
-    [string]$xmlFilePath
+    [string]$BranchStyle = "SingleLine"
     
     )
 
@@ -116,8 +142,11 @@ Function Show-Treemenu {
     }
 
     # IMPORT THE XML FILE FROM THE PROVIDED PATH AND GET TO THE "SECTION" PORTION WITH THE SECTIONS, OPTIONS, AND FUNCTIONS
-    [xml]$xmlRaw = Get-Content -Path $xmlFilePath
+    [xml]$xmlRaw = Get-Content -Path $XmlPath
     $xmlData = $xmlRaw.MenuConfig.Section 
+
+    # $xmlData
+    # Start-Sleep -Seconds 5
     
     # CONFIRM THE NUMBER OF OPTIONS AND FUNCTIONS ARE THE SAME TO ENSURE FUNCTIONALITY.
     if($xmlData.Option.Count -ne $xmlData.Function.Count){
@@ -253,7 +282,7 @@ $MainScriptBlock = {
                     $functionToInvoke = $xmlData[$index].Function[$subIndex]
                     
                     Write-host "" 
-                    Invoke-Expression -Command $functionToInvoke
+                    Invoke-Expression "& '$functionToInvoke'"
                     Write-host "" 
                     
                     do{
@@ -270,7 +299,7 @@ $MainScriptBlock = {
 
                 }
                 "q" {
-                    Invoke-Expression -Command $QuitExpression
+                    Invoke-Expression "& '$QuitExpression'"
                     $quitFlag = $true  # Set the quit flag to true
                     Break;             # Break out of the inner loop
                 }
@@ -283,7 +312,7 @@ $MainScriptBlock = {
     
     & $MainScriptBlock
     
-} 
+}
 
 
 function S1-Function1{
@@ -318,8 +347,8 @@ function S3-Function2{
 # $TestXml.MenuConfig.Section 
 
 
-Show-TreeMenu -BranchStyle Singleline -QuitExpression "Write-host 'I Quit!' -f Red; Return" -xmlFilePath "C:\Users\Daniel Metzler\Desktop\ShowTreemenu\Settings.xml"
+# Show-TreeMenu -XmlPath "C:\Users\Daniel Metzler\Desktop\ShowTreemenu\Settings.xml"
 
+Show-TreeMenu -XmlPath "C:\Users\Daniel Metzler\Desktop\ShowTreemenu\MenuConfig.xml" #-BranchStyle DoubleLine -TitleColor Yellow -BranchColor Darkgreen -SectionColor Green -OptionColor White -PromptColor Yellow
 
-
-
+# "C\Users\REPLACEUser\Desktop\ShowTreemenu\Settings.xml"
