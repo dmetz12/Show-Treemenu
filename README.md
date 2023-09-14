@@ -92,14 +92,4 @@ and execute a collection of functions/scriptpaths in a structured and user-frien
 ```powershell
 
 PS > & Show-TreeMenu -XmlPath "C:\Users\REPLACE_USER\Desktop\ShowTreemenu\MenuConfig.xml"
-
-
-
-
-
-
-
-
-
-
-
+```
