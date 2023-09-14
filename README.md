@@ -13,7 +13,7 @@ and execute a collection of functions/scriptpaths in a structured and user-frien
 
 ## **-XmlPath**
 
-> ![Foo](https://img.shields.io/badge/Type-String-blue?) ![Foo](https://img.shields.io/badge/Mandatory-true-red?) 
+> ![Foo](https://img.shields.io/badge/Type-String-blue?) ![Foo](https://img.shields.io/badge/Mandatory-true-green?) 
 
 The path of the [MenuConfig.xml] file.
  
