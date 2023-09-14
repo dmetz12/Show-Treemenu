@@ -18,29 +18,29 @@ Description: The path of the [MenuConfig.xml] file.
   ## **-MenuTitle**
 
 > ![Foo](https://img.shields.io/badge/Type-String-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-FALSE-Green?) ![Foo](https://img.shields.io/badge/DefaultValue-MainMenu-Blue?color=5547a8)\
-Description: Default ==> [MainMenu] Simply the title of the menu.
+Description: Simply the title of the menu.
 
   ## **-SelectionPrompt**
 
 > ![Foo](https://img.shields.io/badge/Type-String-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-FALSE-Green?) ![Foo](https://img.shields.io/badge/DefaultValue-Choose an Option-Blue?color=5547a8)\
-
+Description: The phrase the user will be prompted with to make a choice/selection.
 
   ## **-QuitExpression**
 
 > ![Foo](https://img.shields.io/badge/Type-String-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-FALSE-Green?) ![Foo](https://img.shields.io/badge/DefaultValue-Write-host '
 The parameter [' -nonewline; Write-host 'QuitExpression' -f Red -nonewline; Write-host '] by default is set to [' -nonewline; Write-host 'Return' -f Cyan -nonewline; Write-host ']
 '; Return-Blue?color=5547a8)\
-Description: Default ==> [Return] Use this to call a function to logoff an API, call a quit function / script path, or simply return to exit the menu.
+Description: Use this to call a function to logoff an API, call a quit function / script path, or simply return to exit the menu.
 
   ## **-TitleColor**
 
 > ![Foo](https://img.shields.io/badge/Type-String-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-FALSE-Green?) ![Foo](https://img.shields.io/badge/DefaultValue-Cyan-Blue?color=5547a8)\
-Description: Default ==> [Cyan] The phrase the user will be prompted with to make a choice/selection.
+Description: The color of the title of the menu.
 
   ## **-BranchColor**
 
 > ![Foo](https://img.shields.io/badge/Type-String-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-FALSE-Green?) ![Foo](https://img.shields.io/badge/DefaultValue-Gray-Blue?color=5547a8)\
-Description: Default ==> [Gray] The color of the "grid-like" symbols used to create the treemenu.
+Description: The color of the "grid-like" symbols used to create the treemenu.
 
   ## **-SectionColor**
 
@@ -55,105 +55,9 @@ Description: Default ==> [White] The color of the options, below and indented un
   ## **-PromptColor**
 
 > ![Foo](https://img.shields.io/badge/Type-String-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-FALSE-Green?) ![Foo](https://img.shields.io/badge/DefaultValue-Cyan-Blue?color=5547a8)\
-
+Description: The color of the phrase the user will be prompted with to make a choice/selection.
 
   ## **-BranchStyle**
 
 > ![Foo](https://img.shields.io/badge/Type-String-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-FALSE-Green?) ![Foo](https://img.shields.io/badge/DefaultValue-SingleLine-Blue?color=5547a8)\
-Description: Default ==> [Singleline] The style [ASCII, SingleLine, or DoubleLine] that will be used to generate the treemenu.
-
-
-#### EXAMPLE 1
-```powershell
-P
-C
-:
-\
-T
-e
-m
-p
->
-S
-h
-o
-w
--
-T
-r
-e
-e
-M
-e
-n
-u
-
--
-X
-m
-l
-P
-a
-t
-h
-
-"
-C
-:
-\
-U
-s
-e
-r
-s
-\
-R
-E
-P
-L
-A
-C
-E
-_
-U
-S
-E
-R
-\
-D
-e
-s
-k
-t
-o
-p
-\
-S
-h
-o
-w
-T
-r
-e
-e
-m
-e
-n
-u
-\
-M
-e
-n
-u
-C
-o
-n
-f
-i
-g
-.
-x
-m
-l
-"
-```
+Description: The style [ASCII, SingleLine, or DoubleLine] that will be used to generate the treemenu.

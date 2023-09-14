@@ -13,22 +13,26 @@ Function Show-Treemenu {
 
 .PARAMETER MenuTitle
     Description:
-    Default ==> [MainMenu]
     Simply the title of the menu. 
 
 .PARAMETER QuitExpression
     Description:
-    Default ==> [Return]
     Use this to call a function to logoff an API, call a quit function / script path, or simply return to exit the menu. 
+
+.PARAMETER SelectionPrompt
+    Description:
+    The phrase the user will be prompted with to make a choice/selection.
 
 .PARAMETER TitleColor
     Description:
-    Default ==> [Cyan]
-    The phrase the user will be prompted with to make a choice/selection.
+    The color of the title of the menu.
+
+.PARAMETER PromptColor
+    Description:
+    The color of the phrase the user will be prompted with to make a choice/selection.
 
 .PARAMETER BranchColor
     Description:
-    Default ==> [Gray]
     The color of the "grid-like" symbols used to create the treemenu.
 
 .PARAMETER SectionColor
@@ -43,7 +47,6 @@ Function Show-Treemenu {
 
 .PARAMETER BranchStyle
     Description:
-    Default ==> [Singleline]
     The style [ASCII, SingleLine, or DoubleLine] that will be used to generate the treemenu.
 
 .PARAMETER XmlPath
@@ -51,7 +54,7 @@ Function Show-Treemenu {
     The path of the [MenuConfig.xml] file.
 
 .EXAMPLE
-    PS C:\Temp>Show-TreeMenu -XmlPath "C:\Users\REPLACE_USER\Desktop\ShowTreemenu\MenuConfig.xml"
+    & Show-TreeMenu -XmlPath "C:\Users\REPLACE_USER\Desktop\ShowTreemenu\MenuConfig.xml"
 
 .NOTES
     File Name      : Show-Treemenu.ps1
@@ -61,6 +64,7 @@ Function Show-Treemenu {
     [CmdletBinding()]
     param(
     [Parameter(ValueFromPipeline=$true, Mandatory)]
+    [ValidateNotNullOrEmpty()]
     [ValidateScript({Test-Path -Path $_})]
     [string]$XmlPath,
 
@@ -78,32 +82,26 @@ Function Show-Treemenu {
     
     [Parameter()]
     [ValidateSet("Black","Darkblue", "DarkGreen", "DarkCyan", "DarkRed", "DarkMagenta", "DarkYellow", "Gray", "DarkGray", "Blue", "Green", "Cyan", "Red", "Magenta", "Yellow", "White")]
-    [ValidateNotNullOrEmpty()]
     [string]$TitleColor = "Cyan",
 
     [Parameter()]
     [ValidateSet("Black","Darkblue", "DarkGreen", "DarkCyan", "DarkRed", "DarkMagenta", "DarkYellow", "Gray", "DarkGray", "Blue", "Green", "Cyan", "Red", "Magenta", "Yellow", "White")]
-    [ValidateNotNullOrEmpty()]
     [string]$BranchColor = "Gray",
 
     [Parameter()]
     [ValidateSet("Black","Darkblue", "DarkGreen", "DarkCyan", "DarkRed", "DarkMagenta", "DarkYellow", "Gray", "DarkGray", "Blue", "Green", "Cyan", "Red", "Magenta", "Yellow", "White")]
-    [ValidateNotNullOrEmpty()]
     [string]$SectionColor = "Yellow",
 
     [Parameter()]
     [ValidateSet("Black","Darkblue", "DarkGreen", "DarkCyan", "DarkRed", "DarkMagenta", "DarkYellow", "Gray", "DarkGray", "Blue", "Green", "Cyan", "Red", "Magenta", "Yellow", "White")]
-    [ValidateNotNullOrEmpty()]
     [string]$OptionColor = "White",
 
     [Parameter()]
     [ValidateSet("Black","Darkblue", "DarkGreen", "DarkCyan", "DarkRed", "DarkMagenta", "DarkYellow", "Gray", "DarkGray", "Blue", "Green", "Cyan", "Red", "Magenta", "Yellow", "White")]
-    [ValidateNotNullOrEmpty()]
     [string]$PromptColor = "Cyan",
 
     [Parameter()]
     [ValidateSet("ASCII", "SingleLine", "DoubleLine")]
-    [ValidateNotNullOrEmpty()]
     [string]$BranchStyle = "SingleLine"
     
     )
