@@ -15,7 +15,7 @@ and execute a collection of functions/scriptpaths in a structured and user-frien
 
 > ![Foo](https://img.shields.io/badge/Type-String-blue?) ![Foo](https://img.shields.io/badge/Mandatory-true-green?) 
 >
-> The path of the [MenuConfig.xml] file.
+> The path of the `MenuConfig.xml` file.
  
 
 ## **-Timer**
@@ -85,10 +85,22 @@ and execute a collection of functions/scriptpaths in a structured and user-frien
 
 > ![Foo](https://img.shields.io/badge/Type-String-blue?) ![Foo](https://img.shields.io/badge/Mandatory-false-red?) ![Foo](https://img.shields.io/badge/DefaultValue-SingleLine-blue?color=5547a8)
 >
-> The style [ASCII, SingleLine, or DoubleLine] that will be used to generate the treemenu.
+> The style `ASCII`, `SingleLine`, or `DoubleLine` that will be used to generate the treemenu.
  
 
 #### EXAMPLE 1
 ```powershell
-
 PS > & Show-TreeMenu -XmlPath "C:\Users\REPLACE_USER\Desktop\ShowTreemenu\MenuConfig.xml"
+```
+
+
+
+
+
+
+
+
+
+
+
+
