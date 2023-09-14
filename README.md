@@ -90,17 +90,5 @@ and execute a collection of functions/scriptpaths in a structured and user-frien
 
 #### EXAMPLE 1
 ```powershell
-PS > & Show-TreeMenu -XmlPath "C:\Users\REPLACE_USER\Desktop\ShowTreemenu\MenuConfig.xml"
+Show-TreeMenu -XmlPath "C:\Users\REPLACE_USER\Desktop\ShowTreemenu\MenuConfig.xml"
 ```
-
-
-
-
-
-
-
-
-
-
-
-

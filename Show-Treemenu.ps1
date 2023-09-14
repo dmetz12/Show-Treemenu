@@ -45,7 +45,7 @@ Function Show-Treemenu {
     The path of the `MenuConfig.xml` file.
 
 .EXAMPLE
-    & Show-TreeMenu -XmlPath "C:\Users\REPLACE_USER\Desktop\ShowTreemenu\MenuConfig.xml"
+    Show-TreeMenu -XmlPath "C:\Users\REPLACE_USER\Desktop\ShowTreemenu\MenuConfig.xml"
 #>
 
     [CmdletBinding()]
