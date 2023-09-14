@@ -6,8 +6,8 @@ The `Show-Treemenu` function reads user-specific terminal menu settings from an 
 and uses these settings to create an organized menu. Users can select from different menu sections,
 options within those sections, and execute corresponding functions.
 
-This function allows for `easy customization of terminal menus, making it convenient for users to access
-and execute a collection of functions/scriptpaths in a structured and user-friendly manner`.
+This function allows for **easy customization of terminal menus, making it convenient for users to access
+and execute a collection of functions/scriptpaths in a structured and user-friendly manner**.
 # PARAMETERS
 
 
@@ -15,7 +15,7 @@ and execute a collection of functions/scriptpaths in a structured and user-frien
 
 > ![Foo](https://img.shields.io/badge/Type-String-blue?) ![Foo](https://img.shields.io/badge/Mandatory-true-green?) 
 >
-> The path of the `MenuConfig.xml` file.
+> The path of the **MenuConfig.xml** file.
  
 
 ## **-Timer**
