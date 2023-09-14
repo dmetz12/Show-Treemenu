@@ -31,7 +31,7 @@ Description: Simply the title of the menu.
 
 ## **-SelectionPrompt**
 
-> ![Foo](https://img.shields.io/badge/Type-String-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-FALSE-Red?) ![Foo](https://img.shields.io/badge/DefaultValue-Choose an Option-Blue?color=5547a8)
+> ![Foo](https://img.shields.io/badge/Type-String-Blue?) ![Foo](https://img.shields.io/badge/Mandatory-FALSE-Red?) ![Foo](https://img.shields.io/badge/DefaultValue-Choose_an_Option-Blue?color=5547a8)
 Description: The phrase the user will be prompted with to make a choice/selection.
 
 
