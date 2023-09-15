@@ -18,18 +18,12 @@ and execute a collection of functions/scriptpaths in a structured and user-frien
 > The path of the **MenuConfig.xml** file.
  
 
-# Examples
-
-
 ## **-Timer**
 
 > ![Foo](https://img.shields.io/badge/Type-Boolean-blue?) ![Foo](https://img.shields.io/badge/Mandatory-false-red?) ![Foo](https://img.shields.io/badge/DefaultValue-True-blue?color=5547a8)
 >
 > Gets the processing time of an executed function/scriptfile and returns it cleanly in `00h 00m 00s` time format.
  
-
-# Examples
-
 
 ## **-MenuTitle**
 
@@ -38,18 +32,12 @@ and execute a collection of functions/scriptpaths in a structured and user-frien
 > Simply the title of the menu.
  
 
-# Examples
-
-
 ## **-SelectionPrompt**
 
 > ![Foo](https://img.shields.io/badge/Type-String-blue?) ![Foo](https://img.shields.io/badge/Mandatory-false-red?) ![Foo](https://img.shields.io/badge/DefaultValue-Choose_an_Option-blue?color=5547a8)
 >
 > The phrase the user will be prompted with to make a choice/selection.
  
-
-# Examples
-
 
 ## **-QuitExpression**
 
@@ -58,18 +46,12 @@ and execute a collection of functions/scriptpaths in a structured and user-frien
 > Use this to call a function to logoff an API, call a quit function / script path, or simply return to exit the menu.
  
 
-# Examples
-
-
 ## **-TitleColor**
 
 > ![Foo](https://img.shields.io/badge/Type-String-blue?) ![Foo](https://img.shields.io/badge/Mandatory-false-red?) ![Foo](https://img.shields.io/badge/DefaultValue-Cyan-blue?color=5547a8)
 >
 > The color of the title of the menu.
  
-
-# Examples
-
 
 ## **-BranchColor**
 
@@ -78,18 +60,12 @@ and execute a collection of functions/scriptpaths in a structured and user-frien
 > The color of the **grid-like** symbols used to create the treemenu.
  
 
-# Examples
-
-
 ## **-SectionColor**
 
 > ![Foo](https://img.shields.io/badge/Type-String-blue?) ![Foo](https://img.shields.io/badge/Mandatory-false-red?) ![Foo](https://img.shields.io/badge/DefaultValue-Yellow-blue?color=5547a8)
 >
 > The color of the main sections or categories.
  
-
-# Examples
-
 
 ## **-OptionColor**
 
@@ -98,9 +74,6 @@ and execute a collection of functions/scriptpaths in a structured and user-frien
 > The color of the options, below and indented underneath the sections.
  
 
-# Examples
-
-
 ## **-PromptColor**
 
 > ![Foo](https://img.shields.io/badge/Type-String-blue?) ![Foo](https://img.shields.io/badge/Mandatory-false-red?) ![Foo](https://img.shields.io/badge/DefaultValue-Cyan-blue?color=5547a8)
@@ -108,18 +81,12 @@ and execute a collection of functions/scriptpaths in a structured and user-frien
 > The color of the phrase the user will be prompted with to make a choice/selection.
  
 
-# Examples
-
-
 ## **-BranchStyle**
 
 > ![Foo](https://img.shields.io/badge/Type-String-blue?) ![Foo](https://img.shields.io/badge/Mandatory-false-red?) ![Foo](https://img.shields.io/badge/DefaultValue-SingleLine-blue?color=5547a8)
 >
 > The style *ASCII*, *SingleLine*, or *DoubleLine* that will be used to generate the treemenu.
  
-
-# Examples
-
 
 ####  EXAMPLE 1 
 ```powershell
