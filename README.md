@@ -13,13 +13,14 @@ Configures and displays a terminal menu based on end-user settings defined in an
 ## SYNTAX
 
 ```
-Show-Treemenu [-XmlPath] <String> [[-Timer] <Boolean>] [[-MenuTitle] <String>] [[-SelectionPrompt] <String>]
- [[-QuitExpression] <String>] [[-TitleColor] <String>] [[-BranchColor] <String>] [[-SectionColor] <String>]
- [[-OptionColor] <String>] [[-PromptColor] <String>] [[-BranchStyle] <String>] [<CommonParameters>]
+Show-Treemenu [-XmlPath] <String> [[-MenuTitle] <String>] [[-SelectionPrompt] <String>]
+ [[-QuitExpression] <String>] [[-Timer] <Boolean>] [[-TitleColor] <String>] [[-BranchColor] <String>]
+ [[-SectionColor] <String>] [[-OptionColor] <String>] [[-PromptColor] <String>] [[-BranchStyle] <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The \`Show-Treemenu\` function reads user-specific terminal menu settings from an XML file
+The **Show-Treemenu** function reads user-specific terminal menu settings from an XML file
 and uses these settings to create an organized menu.
 Users can select from different menu sections,
 options within those sections, and execute corresponding functions.
@@ -31,17 +32,17 @@ and execute a collection of functions/scriptpaths in a structured and user-frien
 
 ### EXAMPLE 1
 ```
-Show-TreeMenu -XmlPath "C:\Users\REPLACE_USER\Desktop\ShowTreemenu\MenuConfig.xml"
+Show-TreeMenu -XmlPath "C:\YourPath\ShowTreemenu\MenuConfig.xml"
 ```
 
 ### EXAMPLE 2
 ```
-Show-TreeMenu -XmlPath "C:\Users\REPLACE_USER\Desktop\ShowTreemenu\MenuConfig.xml" -BranchColor Yellow
+Show-TreeMenu -XmlPath "C:\YourPath\ShowTreemenu\MenuConfig.xml" -BranchColor Yellow
 ```
 
 ### EXAMPLE 3
 ```
-Show-TreeMenu -XmlPath "C:\Users\REPLACE_USER\Desktop\ShowTreemenu\MenuConfig.xml" -BranchColor Yellow -BranchStyle "DoubleLine"
+Show-TreeMenu -XmlPath "C:\YourPath\ShowTreemenu\MenuConfig.xml" -BranchColor Yellow -BranchStyle "DoubleLine"
 ```
 
 ## PARAMETERS
@@ -61,21 +62,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Timer
-Gets the processing time of an executed function/scriptfile and returns it cleanly in \`00h 00m 00s\` time format.
-
-```yaml
-Type: Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: True
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -MenuTitle
 Simply the title of the menu.
 
@@ -85,7 +71,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: 2
 Default value: MainMenu
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -100,7 +86,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: 3
 Default value: Choose an Option
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -115,8 +101,23 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: 4
 Default value: Return
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Timer
+Gets the processing time of an executed function/scriptfile and returns it cleanly in \`00h 00m 00s\` time format.
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: True
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

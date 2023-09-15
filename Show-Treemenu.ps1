@@ -1,10 +1,10 @@
 Function Show-Treemenu {
-    <#
+<#
 .SYNOPSIS
     Configures and displays a terminal menu based on end-user settings defined in an XML file.
 
 .DESCRIPTION
-    The `Show-Treemenu` function reads user-specific terminal menu settings from an XML file
+    The **Show-Treemenu** function reads user-specific terminal menu settings from an XML file
     and uses these settings to create an organized menu. Users can select from different menu sections,
     options within those sections, and execute corresponding functions.
 
@@ -45,19 +45,19 @@ Function Show-Treemenu {
     The path of the **MenuConfig.xml** file.
 
 .EXAMPLE
-    Show-TreeMenu -XmlPath "C:\Users\REPLACE_USER\Desktop\ShowTreemenu\MenuConfig.xml"
+    Show-TreeMenu -XmlPath "C:\YourPath\ShowTreemenu\MenuConfig.xml"
 
 .EXAMPLE
-    Show-TreeMenu -XmlPath "C:\Users\REPLACE_USER\Desktop\ShowTreemenu\MenuConfig.xml" -BranchColor Yellow
+    Show-TreeMenu -XmlPath "C:\YourPath\ShowTreemenu\MenuConfig.xml" -BranchColor Yellow
 
 .EXAMPLE
-    Show-TreeMenu -XmlPath "C:\Users\REPLACE_USER\Desktop\ShowTreemenu\MenuConfig.xml" -BranchColor Yellow -BranchStyle "DoubleLine"
+    Show-TreeMenu -XmlPath "C:\YourPath\ShowTreemenu\MenuConfig.xml" -BranchColor Yellow -BranchStyle "DoubleLine"
 
 .NOTES
     Author: Dan Metzler
 #>
 
-    [CmdletBinding()]
+    [CmdletBinding(HelpUri="https://github.com/dmetz12/Show-Treemenu")]
     param(
     [Parameter(ValueFromPipeline=$true, Mandatory)]
     [ValidateNotNullOrEmpty()]
@@ -65,20 +65,17 @@ Function Show-Treemenu {
     [string]$XmlPath,
 
     [Parameter()]
-    [boolean]$Timer = $true,
-
-    [Parameter()]
-    [ValidateNotNullOrEmpty()]
     [string]$MenuTitle = "MainMenu",
 
     [Parameter()]
-    [ValidateNotNullOrEmpty()]
     [string]$SelectionPrompt = "Choose an Option",
 
     [Parameter()]
-    [ValidateNotNullOrEmpty()]
     [string]$QuitExpression = "Return",
-    
+
+    [Parameter()]
+    [boolean]$Timer = $true,
+
     [Parameter()]
     [ValidateSet("Black","Darkblue", "DarkGreen", "DarkCyan", "DarkRed", "DarkMagenta", "DarkYellow", "Gray", "DarkGray", "Blue", "Green", "Cyan", "Red", "Magenta", "Yellow", "White")]
     [string]$TitleColor = "Cyan",
@@ -342,43 +339,7 @@ $MainScriptBlock = {
 }
 
 
-function S1-Function1{
-    Write-Host "Executing [S1-Function1]..." -ForegroundColor Green
-    start-sleep -seconds 5
-    1..100 | foreach-object {
-        Write-Host "Cool" 
-    }
-    Write-Host "SUCCESS!" -ForegroundColor Green
-}
-function S1-Function2{
-    Write-Host "Executing [S1-Function2]..." -ForegroundColor Magenta
-    Write-Host "SUCCESS!" -ForegroundColor Green
-}
-function S2-Function1{
-    Write-Host "Executing [S2-Function1]..." -ForegroundColor Yellow
-    Write-Host "SUCCESS!" -ForegroundColor Green
-}
-function S2-Function2{
-    Write-Host "Executing [S2-Function2]..." -ForegroundColor Yellow
-    Write-Host "SUCCESS!" -ForegroundColor Green
-}
-function S3-Function1{
-    Write-Host "Executing [S3-Function1]..." -ForegroundColor Yellow
-    Write-Host "SUCCESS!" -ForegroundColor Green
-}
-function S3-Function2{
-    Write-Host "Executing [S3-Function2]..." -ForegroundColor Yellow
-    Write-Host "SUCCESS!" -ForegroundColor Green
-}
 
-
-# [xml]$TestXml = Get-Content -Path ".\Settings.xml"
-
-# $TestXml.MenuConfig.Section 
-
-
-# Show-TreeMenu -XmlPath "C:\Users\Daniel Metzler\Desktop\ShowTreemenu\Settings.xml"
-
-Show-TreeMenu -XmlPath "C:\Users\Daniel Metzler\Desktop\ShowTreemenu\MenuConfig.xml" -BranchColor magenta #-BranchStyle DoubleLine -TitleColor Yellow -BranchColor Darkgreen -SectionColor Green -OptionColor White -PromptColor Yellow
-
-# "C\Users\REPLACEUser\Desktop\ShowTreemenu\Settings.xml"
+$command = "Show-Treemenu"
+New-MarkdownHelp -Command $command -OutputFolder "C:\Users\Daniel Metzler\Desktop\ShowTreemenu" -force 
+Rename-Item -Path ".\$command.md" -NewName "README.MD"
