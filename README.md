@@ -88,10 +88,30 @@ and execute a collection of functions/scriptpaths in a structured and user-frien
 > The style *ASCII*, *SingleLine*, or *DoubleLine* that will be used to generate the treemenu.
  
 
+@"
 #### EXAMPLE 1
 ```powershell
+
+
 PS > Show-TreeMenu -XmlPath "C:\Users\REPLACE_USER\Desktop\ShowTreemenu\MenuConfig.xml"
+
+
+
+
+
+
+
+
+
+
+
 ```
+@"
+#### EXAMPLE 2
+```powershell
+
+
+PS > Show-TreeMenu -XmlPath "C:\Users\REPLACE_USER\Desktop\ShowTreemenu\MenuConfig.xml" -BranchColor Yellow
 
 
 
@@ -103,4 +123,4 @@ PS > Show-TreeMenu -XmlPath "C:\Users\REPLACE_USER\Desktop\ShowTreemenu\MenuConf
 
 
 
-
+```
