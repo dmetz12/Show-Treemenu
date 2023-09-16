@@ -54,7 +54,7 @@ Function Show-Treemenu {
         Show-TreeMenu -XmlPath "C:\YourPath\ShowTreemenu\MenuConfig.xml" -BranchColor Yellow
     
     .EXAMPLE
-        Show-TreeMenu -XmlPath "C:\YourPath\ShowTreemenu\MenuConfig.xml" -BranchColor Yellow -BranchStyle "DoubleLine"
+        Show-Treemenu -XmlPath .\MenuConfig.xml -TitleColor Green -BranchColor Cyan -SectionColor Yellow -OptionColor White -BranchStyle DoubleLine -PromptColor Green 
     
     .NOTES
         Author: Dan Metzler
@@ -401,6 +401,5 @@ function Function-ForS3Option3{
 }
 
 # CALL THE SHOW-TREEMENU FUNCTION AND PASS IT THE XML FILE
-Show-Treemenu -XmlPath .\MenuConfig.xml 
-
+Show-Treemenu -XmlPath .\MenuConfig.xml
 
