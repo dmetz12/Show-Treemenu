@@ -8,6 +8,9 @@ Configures and displays a terminal menu based on end-user settings defined in a 
 ![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/Showcase2.PNG)
 ![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/Showcase3.PNG)
 ![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/Showcase4.PNG)
+### BranchStyle Demo
+![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/Showcase5.PNG)
+![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/Showcase6.PNG)
 
 ## SYNTAX
 
@@ -220,6 +223,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 Author: Dan Metzler
+PowerShellVersion: PowerShell 5.1 or Later Recommended. 
+
+If facing an issue with rendering the menu on PSVersion \< 5.1, try parameter \[-BranchStyle ASCII\] which is **NOT** using Box Drawing Symbols.
+
+To use box drawing symbols effectively, it's recommended to use a newer version of PowerShell, such as PowerShell 5.1 or PowerShell 7, which 
+provide better Unicode support and rendering capabilities.
 
 ## RELATED LINKS
 
