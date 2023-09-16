@@ -1,13 +1,13 @@
 # Show-Treemenu
 
+## SYNOPSIS
+Configures and displays a terminal menu based on end-user settings defined in a .XML file.
+
 ## DEMO
 ![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/Showcase1.PNG)
 ![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/Showcase2.PNG)
 ![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/Showcase3.PNG)
 ![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/Showcase4.PNG)
-
-## SYNOPSIS
-Configures and displays a terminal menu based on end-user settings defined in an XML file.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Show-Treemenu [-XmlPath] <String> [[-MenuTitle] <String>] [[-SelectionPrompt] <S
 ```
 
 ## DESCRIPTION
-The **Show-Treemenu** function reads user-specific terminal menu settings from an XML file
+The **Show-Treemenu** function reads user-specific terminal menu settings from an .XML file
 and uses these settings to create an organized menu.
 Users can select from different menu sections,
 options within those sections, and execute corresponding functions.
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -Timer
-Gets the processing time of an executed function/scriptfile and returns it cleanly in \`00h 00m 00s\` time format.
+Gets the processing time of an executed function/scriptfile and returns it cleanly in **00h 00m 00s** time format.
 
 ```yaml
 Type: Boolean
@@ -223,5 +223,5 @@ Author: Dan Metzler
 
 ## RELATED LINKS
 
-[https://github.com/dmetz12/](https://github.com/dmetz12/)
+[https://github.com/dmetz12](https://github.com/dmetz12)
 

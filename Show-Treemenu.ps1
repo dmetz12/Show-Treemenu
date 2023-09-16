@@ -1,10 +1,10 @@
 Function Show-Treemenu {
 <#
 .SYNOPSIS
-    Configures and displays a terminal menu based on end-user settings defined in an XML file.
+    Configures and displays a terminal menu based on end-user settings defined in a .XML file.
 
 .DESCRIPTION
-    The **Show-Treemenu** function reads user-specific terminal menu settings from an XML file
+    The **Show-Treemenu** function reads user-specific terminal menu settings from an .XML file
     and uses these settings to create an organized menu. Users can select from different menu sections,
     options within those sections, and execute corresponding functions.
 
@@ -21,7 +21,7 @@ Function Show-Treemenu {
     The phrase the user will be prompted with to make a choice/selection.
 
 .PARAMETER Timer
-    Gets the processing time of an executed function/scriptfile and returns it cleanly in `00h 00m 00s` time format.
+    Gets the processing time of an executed function/scriptfile and returns it cleanly in **00h 00m 00s** time format.
 
 .PARAMETER TitleColor
     The color of the title of the menu.
