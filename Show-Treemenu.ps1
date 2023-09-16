@@ -55,6 +55,12 @@ Function Show-Treemenu {
 
 .NOTES
     Author: Dan Metzler
+    PowerShellVersion: PowerShell 5.1 or Later Recommended. 
+
+    If facing an issue with rendering the menu on PSVersion < 5.1, try parameter [-BranchStyle ASCII] which is **NOT** using Box Drawing Symbols.
+
+    To use box drawing symbols effectively, it's recommended to use a newer version of PowerShell, such as PowerShell 5.1 or PowerShell 7, which 
+    provide better Unicode support and rendering capabilities.
 
 .LINK
     https://github.com/dmetz12

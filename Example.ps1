@@ -58,6 +58,12 @@ Function Show-Treemenu {
     
     .NOTES
         Author: Dan Metzler
+        PowerShellVersion: PowerShell 5.1 or Later Recommended. 
+    
+        If facing an issue with rendering the menu on PSVersion < 5.1, try parameter [-BranchStyle ASCII] which is **NOT** using Box Drawing Symbols.
+    
+        To use box drawing symbols effectively, it's recommended to use a newer version of PowerShell, such as PowerShell 5.1 or PowerShell 7, which 
+        provide better Unicode support and rendering capabilities.
     
     .LINK
         https://github.com/dmetz12
@@ -343,7 +349,6 @@ Function Show-Treemenu {
         & $MainScriptBlock
         
 }
-
 # SECTION 1 FUNCTIONS, THESE FUNCTIONS ARE EXECUTED DEPENDING ON WHAT OPTION IS CHOISEN IN SECTION 1
 function Function-ForS1Option1{
     Write-Host "Executing...[Function for Section 1 Option 1]" -ForegroundColor Green
