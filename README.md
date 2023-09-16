@@ -1,9 +1,10 @@
 # Show-Treemenu
 
 ## DEMO
-![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/Showcase1.PNG)
-![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/Showcase2.PNG)
-![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/Showcase3.PNG)
+![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/showcase1.PNG)
+![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/showcase2.PNG)
+![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/showcase3.PNG)
+![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/showcase4.PNG)
 
 ## SYNOPSIS
 Configures and displays a terminal menu based on end-user settings defined in an XML file.
