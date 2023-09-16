@@ -9,7 +9,9 @@ Configures and displays a terminal menu based on end-user settings defined in a 
 ![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/Showcase3.PNG)
 ![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/Showcase4.PNG)
 ### BranchStyle Demo
+#### DoubleLine
 ![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/Showcase5.PNG)
+#### ASCII
 ![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/Showcase6.PNG)
 
 ## SYNTAX
