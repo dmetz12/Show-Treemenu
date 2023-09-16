@@ -4,10 +4,16 @@
 Configures and displays a terminal menu based on end-user settings defined in a .XML file.
 
 ## DEMO
+#### 1. Configure your MenuConfig.xml file with your SectionNames, Options, & Functions/ScriptPath corresponding to your Options
 ![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/Showcase1.PNG)
+#### 2. Dot Source your functions into memory, and run `Show-Treemenu -XmlPath "C:\Your\XML\Path\MenuConfig.xml"` 
 ![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/Showcase2.PNG)
+#### 3. Make a selection from the MainMenu, the sections submenu will appear 
 ![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/Showcase3.PNG)
+#### 4. Make a selection from the section submenu, the corresponding option's function will execute. 
 ![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/Showcase4.PNG)
+##### *The **[-Timer]** boolean parameter by default is set to $true and will render the time it took to process the function or script path executed. This can be disabled by adding **[-Timer $false]** when executing the Show-Treemenu function*
+
 ### BranchStyle Demo
 #### DoubleLine
 ![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/Showcase5.PNG)
