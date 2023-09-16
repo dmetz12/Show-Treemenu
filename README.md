@@ -3,12 +3,21 @@
 ## SYNOPSIS
 Configures and displays a terminal menu based on end-user settings defined in a .XML file.
 
+## DESCRIPTION
+The **Show-Treemenu** function reads user-specific terminal menu settings from an .XML file
+and uses these settings to create an organized menu.
+Users can select from different menu sections,
+options within those sections, and execute corresponding functions.
+
+This function allows for **easy customization of terminal menus, making it convenient for users to access
+and execute a collection of functions/scriptpaths in a structured and user-friendly manner**.
+
 ## DEMO
 **[1.]** Configure your *MenuConfig.xml* file with your `SectionNames`, `Options`, & `Functions or ScriptPaths` that correspond to your `Options`.
 
 ![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/Showcase1.PNG)
 
-**[2.]** Dot Source your functions into memory, and run `Show-Treemenu -XmlPath "C:\Your\XML\Path\MenuConfig.xml"`. 
+**[2.]** Ensure the functions that will be called are dot sourced or loaded into memory, then run `Show-Treemenu -XmlPath "C:\Your\XML\Path\MenuConfig.xml"`. 
 
 ![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/Showcase2.PNG)
 
@@ -16,7 +25,7 @@ Configures and displays a terminal menu based on end-user settings defined in a 
 
 ![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/Showcase3.PNG)
 
-**[4.]** Make a selection from the section submenu, the corresponding option's function will execute. 
+**[4.]** Make a selection from the generated submenu, the corresponding option's function will execute. 
 
 ![GitHub Logo](https://github.com/dmetz12/Show-Treemenu/blob/main/img/Showcase4.PNG)
 **NOTE:** *The boolean parameter **[-Timer]** by default is set to $true and will render the time it took to process the function or script path executed. This can be disabled by adding **[-Timer $false]** when executing the Show-Treemenu function*.
@@ -35,15 +44,6 @@ Show-Treemenu [-XmlPath] <String> [[-MenuTitle] <String>] [[-SelectionPrompt] <S
  [[-SectionColor] <String>] [[-OptionColor] <String>] [[-PromptColor] <String>] [[-BranchStyle] <String>]
  [<CommonParameters>]
 ```
-
-## DESCRIPTION
-The **Show-Treemenu** function reads user-specific terminal menu settings from an .XML file
-and uses these settings to create an organized menu.
-Users can select from different menu sections,
-options within those sections, and execute corresponding functions.
-
-This function allows for **easy customization of terminal menus, making it convenient for users to access
-and execute a collection of functions/scriptpaths in a structured and user-friendly manner**.
 
 ## EXAMPLES
 

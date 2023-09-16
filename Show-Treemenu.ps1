@@ -51,7 +51,7 @@ Function Show-Treemenu {
     Show-TreeMenu -XmlPath "C:\YourPath\ShowTreemenu\MenuConfig.xml" -BranchColor Yellow
 
 .EXAMPLE
-    Show-TreeMenu -XmlPath "C:\YourPath\ShowTreemenu\MenuConfig.xml" -BranchColor Yellow -BranchStyle "DoubleLine"
+    Show-Treemenu -XmlPath .\MenuConfig.xml -TitleColor Green -BranchColor Cyan -SectionColor Yellow -OptionColor White -BranchStyle DoubleLine -PromptColor Green 
 
 .NOTES
     Author: Dan Metzler
