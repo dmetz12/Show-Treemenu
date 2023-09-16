@@ -1,10 +1,3 @@
----
-external help file:
-Module Name:
-online version:
-schema: 2.0.0
----
-
 # Show-Treemenu
 
 ## SYNOPSIS
@@ -223,3 +216,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 Author: Dan Metzler
 
 ## RELATED LINKS
+
+[https://github.com/dmetz12/](https://github.com/dmetz12/)
+
