@@ -55,6 +55,9 @@ Function Show-Treemenu {
 
 .NOTES
     Author: Dan Metzler
+
+.LINK
+    https://github.com/dmetz12
 #>
 
     [CmdletBinding(HelpUri="https://github.com/dmetz12/Show-Treemenu")]
@@ -99,7 +102,7 @@ Function Show-Treemenu {
     [Parameter()]
     [ValidateSet("ASCII", "SingleLine", "DoubleLine")]
     [string]$BranchStyle = "SingleLine"
-    
+
     )
 
     # CHECK THE STYLE OF THE BRANCH, BOTH SHOULD WORK PROPERLY ALL OF THE TIME, ALTHOUGH WHEN IMPORTING-MODULE FILE WITH SHOW-TREEMENU SOMETIMES CAN RENBDER ERROR WITH BOXDRAWING CHARS
@@ -337,9 +340,3 @@ $MainScriptBlock = {
     & $MainScriptBlock
     
 }
-
-
-
-$command = "Show-Treemenu"
-New-MarkdownHelp -Command $command -OutputFolder "C:\Users\Daniel Metzler\Desktop\ShowTreemenu" -force 
-Rename-Item -Path ".\$command.md" -NewName "README.MD"

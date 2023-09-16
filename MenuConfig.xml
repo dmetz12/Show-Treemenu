@@ -1,28 +1,30 @@
 <?xml version="1.0"?>
 <MenuConfig>
     <Section>
-        <SectionName>ActiveDirectory</SectionName>
-        <Option>Create User</Option>
-        <Option>Create Group</Option>
-        <Function>Cool</Function>
-        <Function>Cool</Function>
+        <SectionName>Section 1</SectionName>
+        <Option>Option1</Option>
+        <Option>Option2</Option>
+        <Option>Option3</Option>
+        <Function>Function-ForS1Option1</Function>
+        <Function>Function-ForS1Option2</Function>
+        <Function>Function-ForS1Option3</Function>
     </Section>
     <Section>
-        <SectionName>Networking</SectionName>
-        <Option>Ping Host</Option>
-        <Option>IP Config</Option>
-        <Option>Test Connection</Option>
-        <Function>S2-Function1</Function>
-        <Function>S2-Function2</Function>
-        <Function>S2-Function2</Function>
+        <SectionName>Section 2</SectionName>
+        <Option>Option1</Option>
+        <Option>Option2</Option>
+        <Option>Option3</Option>
+        <Function>Function-ForS2Option1</Function>
+        <Function>Function-ForS2Option2</Function>
+        <Function>Function-ForS2Option3</Function>
     </Section>
     <Section>
-        <SectionName>Reports</SectionName>
-        <Option>Domain Users</Option>
-        <Option>Domain Groups</Option>
-        <Option>Domain Computers</Option>
-        <Function>S3-Function1</Function>
-        <Function>S3-Function2</Function>
-        <Function>S3-Function2</Function>
+        <SectionName>Section 3</SectionName>
+        <Option>Option1</Option>
+        <Option>Option2</Option>
+        <Option>Option3</Option>
+        <Function>Function-ForS3Option1</Function>
+        <Function>Function-ForS3Option2</Function>
+        <Function>Function-ForS3Option3</Function>
     </Section>
 </MenuConfig>
